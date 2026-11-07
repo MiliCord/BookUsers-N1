@@ -10,6 +10,8 @@ public class Formulariov1 extends JFrame {
     private JList lstNombres;
     private JLabel lblTotal;
 
+
+
     private ArrayList<String> nombres = new ArrayList<>();
 private DefaultListModel<String> modelo = new DefaultListModel<>();
 
