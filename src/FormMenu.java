@@ -22,11 +22,11 @@ public class FormMenu extends JFrame {
         });
 
         btnListado.addActionListener(e -> {
-            new FormListado(usuarios);
+           // new FormListado(usuarios);
         });
 
         btnCreditos.addActionListener(e -> {
-            new FormCreditos();
+            // new FormCreditos();
         });
     }
 
