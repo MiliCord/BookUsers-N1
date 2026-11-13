@@ -32,6 +32,36 @@ public class FormRegistro extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         llenarCombo();
+        DocumentListener vigilante = new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                actualizarUsername();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                actualizarUsername();
+            }
+            public void changedUpdate(DocumentEvent e) {
+                actualizarUsername();
+            }
+        };
+
+        txtPrimerNombre.getDocument().addDocumentListener(vigilante);
+        txtPrimerApellido.getDocument().addDocumentListener(vigilante);
+        txtSegundoApellido.getDocument().addDocumentListener(vigilante);
+
+        btnCargarFoto.addActionListener(e -> {
+            JFileChooser selector = new JFileChooser();
+            selector.setFileFilter(new FileNameExtensionFilter("Imágenes", "png", "jpg"));
+
+            int respuesta = selector.showOpenDialog(this);
+
+            if (respuesta == JFileChooser.APPROVE_OPTION) {
+                rutaFoto = selector.getSelectedFile().getAbsolutePath();
+
+                ImageIcon icono = new ImageIcon(rutaFoto);
+                icono = new ImageIcon(icono.getImage().getScaledInstance(120, 120, 1));
+                lblFoto.setIcon(icono);
+            }
+        });
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -47,6 +77,32 @@ public class FormRegistro extends JFrame {
         cmbTipoId.addItem("42 - Documento de identificación extranjero");
         cmbTipoId.addItem("47 - Permiso Especial de Permanencia (PEP)");
         cmbTipoId.addItem("91 - NUIP");
+    }
+    private String limpiarTexto(String texto) {
+        String t = texto.trim();
+        t = Normalizer.normalize(t, Normalizer.Form.NFD);
+        t = t.replaceAll("\\p{M}", "");
+        t = t.toLowerCase();
+        t = t.replace(" ", "");
+        return t;
+    }
+
+    private void actualizarUsername() {
+        String apellido1 = limpiarTexto(txtPrimerApellido.getText());
+        String apellido2 = limpiarTexto(txtSegundoApellido.getText());
+        String nombre = limpiarTexto(txtPrimerNombre.getText());
+
+        String username = "";
+
+        if (apellido1.length() > 0) {
+            username = username + apellido1.substring(0, 1);
+        }
+        if (apellido2.length() > 0) {
+            username = username + apellido2.substring(0, 1);
+        }
+        username = username + nombre;
+
+        lblUsername.setText(username);
     }
 }
 
