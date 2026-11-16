@@ -27,7 +27,7 @@ public class FormListado extends JFrame {
             }
 
             Usuario elegido = modelo.getElementAt(posicion);
-           // new FormDetalle(elegido);
+            new FormDetalle(elegido);
         });
 
         pack();
