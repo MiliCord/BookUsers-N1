@@ -62,6 +62,42 @@ public class FormRegistro extends JFrame {
                 lblFoto.setIcon(icono);
             }
         });
+
+        btnGuardar.addActionListener(e-> {
+                    String tipo = (String) cmbTipoId.getSelectedItem();
+                    String numero = txtNumeroId.getText().trim();
+                    String nombre1 = txtPrimerNombre.getText().trim();
+                    String nombre2 = txtSegundoNombre.getText().trim();
+                    String apellido1 = txtPrimerApellido.getText().trim();
+                    String apellido2 = txtSegundoApellido.getText().trim();
+                    String password = new String(txtPassword.getPassword());
+                    String telefono = txtTelefono.getText().trim();
+                    String correo = txtCorreo.getText().trim();
+
+                    if (numero.isEmpty() || nombre1.isEmpty() || apellido1.isEmpty()
+                            || password.isEmpty() || telefono.isEmpty() || correo.isEmpty()) {
+                        JOptionPane.showMessageDialog(this, "Faltan campos obligatorios");
+                        return;
+                    }
+
+                    boolean aceptaLetras = tipo.startsWith("41") || tipo.startsWith("42");
+                    if (aceptaLetras == false && soloDigitos(numero) == false) {
+                        JOptionPane.showMessageDialog(this, "El número solo debe tener dígitos");
+                        return;
+                    }
+                    if (correo.contains("@") == false) {
+                        JOptionPane.showMessageDialog(this, "El correo debe contener @");
+                        return;
+                    }
+
+                    Usuario u = new Usuario(tipo, numero, nombre1, nombre2, apellido1, apellido2,
+                            lblUsername.getText(), password, telefono, correo, rutaFoto);
+                    usuarios.add(u);
+
+                    JOptionPane.showMessageDialog(this, "Usuario registrado: " + u.getUsername());
+                    limpiarFormulario();
+                });
+
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -103,6 +139,28 @@ public class FormRegistro extends JFrame {
         username = username + nombre;
 
         lblUsername.setText(username);
+    }
+
+    private boolean soloDigitos(String texto) {
+        for (int i = 0; i < texto.length(); i++) {
+            if (Character.isDigit(texto.charAt(i)) == false) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void limpiarFormulario() {
+        txtNumeroId.setText("");
+        txtPrimerNombre.setText("");
+        txtSegundoNombre.setText("");
+        txtPrimerApellido.setText("");
+        txtSegundoApellido.setText("");
+        txtPassword.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
+        lblFoto.setIcon(null);
+        rutaFoto = "";
     }
 }
 
