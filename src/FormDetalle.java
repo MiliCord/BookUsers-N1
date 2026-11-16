@@ -1,4 +1,8 @@
 import javax.swing.*;
+import com.sha2cs.generatepdf.DocumentoPDF;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 
 public class FormDetalle extends JFrame {
     private JPanel panelPrincipal;
@@ -44,6 +48,31 @@ public class FormDetalle extends JFrame {
     }
 
     private void generarPdf() {
-        //
+        try {
+            DocumentoPDF documento = new DocumentoPDF("Ficha de usuario");
+
+            if (usuario.getRutaFoto() != null && new File(usuario.getRutaFoto()).isFile()) {
+                documento.imagen(usuario.getRutaFoto());
+            }
+
+            documento.campo("Id", usuario.getId());
+            documento.campo("Tipo de identificación", usuario.getTipoIdentificacion());
+            documento.campo("Número de identificación", usuario.getNumeroIdentificacion());
+            documento.campo("Primer nombre", usuario.getPrimerNombre());
+            documento.campo("Segundo nombre", usuario.getSegundoNombre());
+            documento.campo("Primer apellido", usuario.getPrimerApellido());
+            documento.campo("Segundo apellido", usuario.getSegundoApellido());
+            documento.campo("Username", usuario.getUsername());
+            documento.campo("Teléfono", usuario.getTelefono());
+            documento.campo("Correo", usuario.getCorreo());
+
+            File pdf = documento.guardar("usuario-" + usuario.getId() + ".pdf");
+
+            JOptionPane.showMessageDialog(this, "PDF generado: " + pdf.getAbsolutePath());
+            Desktop.getDesktop().open(pdf);
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "No se pudo generar el PDF: " + e.getMessage());
+        }
     }
-}
+    }

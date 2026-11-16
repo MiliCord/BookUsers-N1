@@ -26,7 +26,7 @@ public class FormMenu extends JFrame {
         });
 
         btnCreditos.addActionListener(e -> {
-            // new FormCreditos();
+             new FormCreditos();
         });
     }
 
