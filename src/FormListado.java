@@ -29,8 +29,10 @@ public class FormListado extends JFrame {
             Usuario elegido = modelo.getElementAt(posicion);
             new FormDetalle(elegido);
         });
-
+        Tema.panel(panelPrincipal);
+        Tema.boton(btnVerDetalle, Tema.ROJO);
         pack();
+        setSize(460, 360);
         setLocationRelativeTo(null);
         setVisible(true);
     }

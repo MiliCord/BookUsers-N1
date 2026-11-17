@@ -97,8 +97,11 @@ public class FormRegistro extends JFrame {
                     JOptionPane.showMessageDialog(this, "Usuario registrado: " + u.getUsername());
                     limpiarFormulario();
                 });
-
+        Tema.panel(panelPrincipal);
+        Tema.boton(btnGuardar, Tema.ROJO);
+        Tema.boton(btnCargarFoto, Tema.NEGRO);
         pack();
+        setSize(520, 680);
         setLocationRelativeTo(null);
         setVisible(true);
 

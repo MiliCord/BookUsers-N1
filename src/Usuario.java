@@ -16,7 +16,7 @@ public class Usuario {
 
     public Usuario(String tipoIdentificacion, String numeroIdentificacion, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String username, String password, String telefono, String correo, String rutaFoto) {
 
-        this.id = contador;
+        this.id = contador + 1;
         this.tipoIdentificacion = tipoIdentificacion;
         this.numeroIdentificacion = numeroIdentificacion;
         this.primerNombre = primerNombre;

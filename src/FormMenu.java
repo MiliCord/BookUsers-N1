@@ -13,7 +13,12 @@ public class FormMenu extends JFrame {
         setContentPane(panelPrincipal);
         setTitle("BookUsers Jesus Ruiz y Luis Garcia");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        Tema.panel(panelPrincipal);
+        Tema.boton(btnRegistrar, Tema.ROJO);
+        Tema.boton(btnListado, Tema.NEGRO);
+        Tema.boton(btnCreditos, Tema.VIOLETA);
         pack();
+        setSize(400, 330);
         setLocationRelativeTo(null);
         setVisible(true);
 

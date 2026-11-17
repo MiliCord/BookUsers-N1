@@ -30,7 +30,13 @@ public class FormDetalle extends JFrame {
             generarPdf();
         });
 
+        Tema.panel(panelPrincipal);
+        Tema.boton(btnGenerarPdf, Tema.ROJO_OSCURO);
+        txtInfo.setBackground(Tema.BLANCO);
+        txtInfo.setForeground(Tema.NEGRO);
+
         pack();
+        setSize(440, 330);
         setLocationRelativeTo(null);
         setVisible(true);
     }
