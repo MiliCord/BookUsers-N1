@@ -31,6 +31,7 @@ public class FormListado extends JFrame {
         });
         Tema.panel(panelPrincipal);
         Tema.boton(btnVerDetalle, Tema.ROJO);
+        setTitle("BookUsers · Listado · Luis García y Jesús Ruiz");
         pack();
         setSize(460, 360);
         setLocationRelativeTo(null);

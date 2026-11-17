@@ -23,6 +23,7 @@ public class FormCreditos extends JFrame {
         Tema.panel(panelPrincipal);
         txtCreditos.setBackground(Tema.BLANCO);
         txtCreditos.setForeground(Tema.NEGRO);
+        setTitle("BookUsers · Créditos · Luis García y Jesús Ruiz");
         pack();
         setSize(480, 330);
         setLocationRelativeTo(null);

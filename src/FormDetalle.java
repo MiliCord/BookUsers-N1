@@ -34,7 +34,7 @@ public class FormDetalle extends JFrame {
         Tema.boton(btnGenerarPdf, Tema.ROJO_OSCURO);
         txtInfo.setBackground(Tema.BLANCO);
         txtInfo.setForeground(Tema.NEGRO);
-
+        setTitle("BookUsers · Detalle · Luis García y Jesús Ruiz");
         pack();
         setSize(440, 330);
         setLocationRelativeTo(null);

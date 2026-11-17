@@ -100,6 +100,7 @@ public class FormRegistro extends JFrame {
         Tema.panel(panelPrincipal);
         Tema.boton(btnGuardar, Tema.ROJO);
         Tema.boton(btnCargarFoto, Tema.NEGRO);
+        setTitle("BookUsers · Registro · Luis García y Jesús Ruiz");
         pack();
         setSize(520, 680);
         setLocationRelativeTo(null);
